@@ -22,7 +22,7 @@ export const paseadorRegister = async (req, res) => {
       const uploadResult = await cloudinary.uploader.upload(file.path, {
         folder: "certificado", 
       });
-      foto_perfil_url = uploadResult.secure_url;
+      certificado_url = uploadResult.secure_url;
     }
   try {
     const passwordHash = await bycrypt.hash(password, 10);
@@ -45,6 +45,7 @@ export const paseadorRegister = async (req, res) => {
     res.json({
       id: walkerSaved._id,
       foto_perfil: walkerSaved.foto_perfil,
+      certificado: walkerSaved.certificado,
       nombre: walkerSaved.nombre,
       telefono: walkerSaved.telefono,
       ciudad: walkerSaved.ciudad,
